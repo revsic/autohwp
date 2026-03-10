@@ -1,0 +1,3 @@
+[submodule "hwpx-mcp"]
+	path = hwpx-mcp
+	url = https://github.com/Dayoooun/hwpx-mcp

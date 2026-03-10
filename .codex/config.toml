@@ -1,0 +1,36 @@
+model = "gpt-5.4"
+model_provider = "openai"
+model_reasoning_effort = "medium"
+
+personality = "pragmatic"
+
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
+
+file_opener = "vscode"
+web_search = "cached"
+
+[history]
+persistence = "save-all"
+max_bytes = 104857600  # 100 MiB
+
+[features]
+multi_agent = true
+
+[agents]
+max_threads = 6
+max_depth = 1
+job_max_runtime_seconds = 1800
+
+[agents.hwpx-explorer]
+description = "HWP Explorer for reading, writing, and updating HWP files."
+config_file = "./agents/hwpx-explorer.toml"
+
+# [[skills.config]]
+# path = "/path/to/skill/SKILL.md"
+# enabled = false
+
+[mcp_servers]
+[mcp_servers.hwpx-mcp]
+command = "node"
+args = ["./hwpx-mcp/mcp-server/dist/index.js"]

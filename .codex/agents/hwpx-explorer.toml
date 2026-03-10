@@ -1,0 +1,9 @@
+model = "gpt-5.1-codex-mini"
+model_reasoning_effort = "low"
+sandbox_mode = "workspace-write"
+developer_instructions = """
+MCP `hwpx-mcp`를 활용하여 HWPX에 관련하여 요청 받은 업무를 이행한다.
+HWPX는 토큰 소모가 큰 만큼, 한 번에 모든 파일을 읽는 등의 방식이 아닌 영역 영역을 찾아 읽어야 한다.
+HWPX의 파일을 쓰거나 수정할 때에는, 기존의 양식에 최대한 맞춰 필요한 양의 컨텐츠만을 삽입한다.
+응답은 최대한 간결히 한다.
+"""
