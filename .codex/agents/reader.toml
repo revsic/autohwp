@@ -1,0 +1,6 @@
+model = "gpt-5.1-codex-mini"
+model_reasoning_effort = "low"
+sandbox_mode = "read-only"
+developer_instructions = """
+Read proper materials and respond concisely.
+"""

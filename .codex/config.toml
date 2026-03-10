@@ -19,18 +19,34 @@ multi_agent = true
 
 [agents]
 max_threads = 6
-max_depth = 1
+max_depth = 2
 job_max_runtime_seconds = 1800
 
 [agents.hwpx-explorer]
 description = "HWP Explorer for reading, writing, and updating HWP files."
 config_file = "./agents/hwpx-explorer.toml"
 
-# [[skills.config]]
-# path = "/path/to/skill/SKILL.md"
-# enabled = false
+[agents.reader]
+description = "Reading materials including HWPX, PDF, and something large files."
+config_file = "./agents/reader.toml"
+
+[agents.drafter]
+description = "Writing drafts."
+config_file = "./agents/drafter.toml"
+
+[agents.reviewer]
+description = "Reviewing drafts for writing quality and grounding."
+config_file = "./agents/reviewer.toml"
 
 [mcp_servers]
 [mcp_servers.hwpx-mcp]
 command = "node"
 args = ["./hwpx-mcp/mcp-server/dist/index.js"]
+
+[mcp_servers.memory]
+command = "npx"
+args = ["-y", "@modelcontextprotocol/server-memory"]
+
+[mcp_servers.sequential-thinking]
+command = "npx"
+args = ["-y", "@modelcontextprotocol/server-sequential-thinking"]

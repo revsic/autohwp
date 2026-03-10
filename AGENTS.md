@@ -2,26 +2,27 @@
 
 ## Repository expectations
 
-- `hwpx-mcp`를 활용하여 사용자의 한글 문서 편집을 돕는다.
+Help user's document writing.
 
-## Writing style rules
+## Agents
 
-문체
-- 갠관적, 공식적 문체
-- 기술 설명 + 정책적 필요성 병행
-- 연구 계획 중심 서술
-- 결과 약속형 문장 구조
-- 1인칭이 아닌 3인칭 객관 서술
-- 불확실성 대신 단정적 표현을 담백히 서술
-- 문제 정의, 기존 한계, 제안 방법, 기대 효과의 설득 구조
-- 기술, 산업, 국가 인프라로의 구조적 확장 연결 (e.g., GPU Efficiency, AI research ecosystem, Physical AI)
-- 기술명은 영문을 유지한다.
+| Agent | Purpose | When to Use |
+| ----- | ------- | ----------- |
+| reader | Reading materials | Reading large files including PDF, HWP, HWPX |
+| drafter | Writing a draft | Before editing or writing the final document |
+| reviewer | Writing quality | After writing draft |
 
-예시
-- 본 과제는 … 문제를 해결하기 위한 … 방법론을 제안한다
-- 본 연구는 … 기반으로 수행된다
-- 이를 통해 … 성능을 확보하는 것을 목표로 한다
+- Access to large files (e.g., PDF, HWP, HWPX) should be performed by `reader`.
+- Access to HWP and HWPX should be performed by `hwpx-explorer`.
 
-## Agents rules
+## Orchestration
 
-- HWP 한글 파일로의 접근(읽기, 쓰기, 등)은 `hwpx-explorer`로만 이행한다.
+1. Call `reader` to gather relevant information.
+    - `reader` should use `hwpx-explorer` when reading HWP and HWPX.
+    - Retrieve information from `memory` if available.
+2. Plan action items to achieve user's request.
+    - Use `sequential-thinking` if the planning requires sequential approach.
+    - When user's request contains document writing or editing, place `drafter` before the final writing or editing.
+3. Perform action items.
+    - Use `hwpx-explorer` when writing contents to HWP or HWPX files.
+4. Update `memory` with learned information (e.g., user's writing style-rule, progress of the project).
