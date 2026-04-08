@@ -50,3 +50,6 @@ args = ["-y", "@modelcontextprotocol/server-memory"]
 [mcp_servers.sequential-thinking]
 command = "npx"
 args = ["-y", "@modelcontextprotocol/server-sequential-thinking"]
+
+[mcp_servers.notion]
+url = "https://mcp.notion.com/mcp"
